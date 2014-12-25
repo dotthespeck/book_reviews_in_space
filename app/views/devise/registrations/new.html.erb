@@ -14,10 +14,9 @@
   </div>
 
   <div class="field">
-    <%= f.label :role %><br />
-    <%= f.text_field :role %>
+    <%= f.label :role, "Role" %><br />
+    <%= f.select :role, options_for_select(%w[Candidate Astronaut]) %>
   </div>
-
 
   <div class="field">
     <%= f.label :email %><br />
@@ -38,7 +37,7 @@
   </div>
 
   <div class="actions">
-    <%= f.submit "Sign up" %>
+    <%= f.submit "Register" %>
   </div>
 <% end %>
 
