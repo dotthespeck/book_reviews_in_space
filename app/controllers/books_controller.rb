@@ -1,30 +1,24 @@
 class BooksController < ApplicationController
 
+  before_action :authenticate_user!, only: [:destroy, :delete, :new, :create, :edit, :update]
+
   def index
     @books = Book.all
   end
+
 
   def new
     @book = Book.new
   end
 
-  def edit
-  id = params[:id]
-  @book = Book.find(id)
-  end
-
-
-  def update
-
-    @book.update(book_params)
-
+  def create
+    @book = Book.new(book_params)
     if @book.save
-      redirect_to @book, notice: { :info => "Book added successfully" }
+      redirect_to root_path, :notice => "Book was successfully create"
     else
-      render :edit, notice: { :info => "Book did not save" }
+      render :new
     end
   end
-
 
   def book_params
     params.require(:book).permit(:title, :author, :description, :url)
