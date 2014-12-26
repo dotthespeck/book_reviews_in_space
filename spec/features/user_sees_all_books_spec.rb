@@ -7,23 +7,24 @@ feature "User sees all books", %q(
 
   Acceptance Criteria
 
-  [ ] I must see the title of each book
-  [ ] I must see the description of each book
-  [ ] I must see the URL of each book
+  [x] I must see the title of each book
+  [x] I must see the description of each book
+  [x] I must see the URL of each book
   [ ] I must see books listed in order, most recently posted first
   [ ] I must see if a book was posted by an astronaut or a candidate
 ) do
 
-feature "User sees all the books" do
+  scenario "User sees all the books" do
 
-  book = FactoryGirl.build(:book)
+    books = FactoryGirl.create_list(:book, 3)
+    books.each do |book|
 
-  visit root_path
+    visit root_path
 
-  expect(page).to have_content "#{book.title}"
-  expect(page).to have_content "#{book.author}"
-  expect(page).to have_content "#{book.description}"
-  expect(page).to have_content "#{book.url}"
-  expect(page).to have_content "#{book.user.role}"
+    expect(page).to have_content "#{book.title}"
+    expect(page).to have_content "#{book.author}"
+    expect(page).to have_content "#{book.description}"
+    expect(page).to have_content "#{book.url}"
+    end
   end
 end

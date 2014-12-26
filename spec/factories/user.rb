@@ -10,7 +10,9 @@ FactoryGirl.define do
   end
 
   factory :book do
-    title "Little Women"
+    sequence :title do |n|
+      "#{n}Little Women"
+    end
     author "Louisa May Alcott"
     description "Story of four women growing up in Concord, MA. Classic novel"
     url "http://www.littlewomen.com"
