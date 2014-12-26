@@ -13,7 +13,7 @@ FactoryGirl.define do
     title "Little Women"
     author "Louisa May Alcott"
     description "Story of four women growing up in Concord, MA. Classic novel"
-    url "www.littlewomen.com"
+    url "http://www.littlewomen.com"
 
     association :user
   end
