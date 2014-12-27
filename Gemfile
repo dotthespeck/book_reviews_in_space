@@ -16,6 +16,7 @@ gem 'devise'
 
 group :development, :test do
   gem 'rspec-rails'
+  gem 'orderly'
   gem 'pry-rails'
   gem 'capybara'
   gem 'launchy'

@@ -37,7 +37,6 @@ feature "user adds a book", %q(
    fill_in "url", with: book.url
    click_on "Create Book"
 
-
   expect(page).to have_content "Book was successfully created"
   end
 

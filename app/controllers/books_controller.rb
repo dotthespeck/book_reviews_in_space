@@ -7,14 +7,13 @@ class BooksController < ApplicationController
     @user = User.all
   end
 
-
   def new
     @book = Book.new
-    @user = User.
   end
 
   def create
     @book = Book.new(book_params)
+    @book.user_id = current_user.id
     if @book.save
       redirect_to root_path, :notice => "Book was successfully created"
     else
