@@ -21,4 +21,10 @@ FactoryGirl.define do
   user
   end
 
+  factory :review do
+    review "This book is amazing. A. Maze. Ing. I would read it many many more times. You should read it too."
+    user
+    book
+  end
+
 end

@@ -12,6 +12,7 @@ class ReviewsController < ApplicationController
     @book = Book.find(params[:book_id])
     @review = Review.new(review_params)
     @review.user_id = current_user.id
+    @review.book_id = @book.id
 
     if @review.save
       redirect_to root_path, notice: "Review was successfully created"

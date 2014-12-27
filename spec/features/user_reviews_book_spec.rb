@@ -8,8 +8,8 @@ feature "user reviews a book", %q(
 Acceptance Criteria
 
   [x] I must be on the book detail page
-  [] I must provide a description that is at least 50 characters long
-  [] I must be presented with errors if I fill out the form incorrectly
+  [x] I must provide a description that is at least 50 characters long
+  [x] I must be presented with errors if I fill out the form incorrectly
 ) do
 
 scenario "User creates a review" do
@@ -42,7 +42,7 @@ scenario "User review is too short" do
 
   user = FactoryGirl.build(:user)
   book = FactoryGirl.create(:book)
-  
+
   visit root_path
   click_on "Sign up"
 
@@ -59,6 +59,8 @@ scenario "User review is too short" do
 
   click_on "Review book"
   fill_in "Review", with: "Awesome!"
+  click_on "Create Review"
+
   expect(page).to have_content "Review is too short"
   end
 

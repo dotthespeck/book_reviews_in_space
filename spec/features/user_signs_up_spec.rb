@@ -94,31 +94,33 @@ feature "User signs up for site" do
   end
 
 
-# scenario "User wants to sign in and sign out" do
-#     visit root_path
-#     click_on "Sign up"
-#
-#     user = FactoryGirl.build(:user)
-#
-#     fill_in "First Name", with: user.first_name
-#     fill_in "Last Name", with: user.last_name
-#     fill_in "Email", with: user.email
-#     fill_in "Password", with: user.password
-#     fill_in "Password confirmation", with: user.password
-#
-#     click_on "Register"
-#
-#     visit root_path
-#     click_on "Logout"
-#     expect(page).to have_content "Signed out successfully"
-#
-#     visit root_path
-#     click_on "Login"
-#
-#     fill_in "Email", with: user.email
-#     fill_in "Password", with: user.password
-#     click_on "Login"
-#     expect(page).to have_content "Signed in successfully"
-#
-#   end
+scenario "User wants to sign out" do
+    visit root_path
+    click_on "Sign up"
+
+    user = FactoryGirl.build(:user)
+
+    fill_in "First Name", with: user.first_name
+    fill_in "Last Name", with: user.last_name
+    fill_in "Email", with: user.email
+    fill_in "Password", with: user.password
+    fill_in "Password confirmation", with: user.password
+
+    click_on "Register"
+
+    visit root_path
+
+    click_on "Logout"
+    expect(page).to have_content "Signed out successfully"
+
+    #Still can't get login to work
+    # click_on "Login"
+    # fill_in "Email", with: user.email
+    # fill_in "Password", with: user.password
+    #
+    # click_on "Login"
+    #
+    # expect(page).to have_content "Signed in successfully"
+
+  end
 end

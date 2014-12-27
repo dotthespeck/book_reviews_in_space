@@ -1,10 +1,19 @@
-<div>
+<div class="content">
   <h1><%= @book.title %></h1>
   <h2><%= @book.author %></h2
   <h3><%= @book.description %></h3>
   <h5><%= @book.url %></h5>
 </div>
 
+<div class ="reviews">
+  <h2>Book reviews from our readers</h2>
+</div>
+<div class="content">
+  <% @book.reviews.order(created_at: :desc).each do |review| %>
+  <h3><%= review.review %></h3>
+  <h5><%= review.user.role %></h5>
+  <% end %>
+</div>
 
 <div class="button">
   <a href="/books/<%=@book.id%>/reviews/new">Review book</a>
