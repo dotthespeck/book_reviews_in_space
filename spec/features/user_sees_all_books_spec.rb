@@ -25,7 +25,6 @@ feature "User sees all books", %q(
     expect(page).to have_content "#{book.author}"
     expect(page).to have_content "#{book.description}"
     expect(page).to have_content "#{book.url}"
-    save_and_open_page
     expect(page).to have_content "Candidate"
     end
   end
