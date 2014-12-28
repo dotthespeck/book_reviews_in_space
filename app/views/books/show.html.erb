@@ -5,6 +5,10 @@
   <h5><%= @book.url %></h5>
 </div>
 
+<div>
+<%= button_to 'Delete', book_path, method: 'delete', data: { confirm: 'Are you sure?' } %>
+</div>
+
 <div class ="reviews">
   <h2>Book reviews from our readers</h2>
 </div>
