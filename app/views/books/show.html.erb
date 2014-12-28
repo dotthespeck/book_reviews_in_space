@@ -12,9 +12,14 @@
   <% @book.reviews.order(created_at: :desc).each do |review| %>
   <h3><%= review.review %></h3>
   <h5><%= review.user.role %></h5>
-  <% end %>
 </div>
 
 <div class="button">
-  <a href="/books/<%=@book.id%>/reviews/new">Review book</a>
+  <a href="/books/<%=review.book_id%>/reviews/<%=review.id%>/edit">Edit Review</a>
+</div>
+
+<% end %>
+
+<div class="button">
+  <a href="/books/<%=@book.id%>/reviews/new">Review Book</a>
 </div>

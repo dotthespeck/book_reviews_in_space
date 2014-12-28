@@ -1,22 +1,24 @@
 require 'rails_helper'
 
-feature "user reviews a book" do
+feature "User edits review" do
+
 #    %q(
 #   As a user
-#   I want to review a book
-#   So I can let other users know what I thought about it
+#   I want to edit a review
+#   So that I can correct any mistakes or add updates
 #
-# Acceptance Criteria
+#   Acceptance Criteria
 #
-#   [x] I must be on the book detail page
-#   [x] I must provide a description that is at least 50 characters long
+#   [x] I must provide valid information
 #   [x] I must be presented with errors if I fill out the form incorrectly
+#   [x] I must be able to get to the edit page from the question details page
 # )
 
-scenario "User creates a review" do
+scenario "User edits review" do
 
   user = FactoryGirl.build(:user)
   book = FactoryGirl.create(:book)
+  review = FactoryGirl.create(:review)
 
   visit root_path
   click_on "Sign up"
@@ -37,12 +39,20 @@ scenario "User creates a review" do
   click_on "Create Review"
 
   expect(page).to have_content "Review was successfully created"
+  click_on book.title
+
+  click_on "Edit Review"
+  fill_in "Review", with: review.review
+
+  click_on "Edit Review"
+
+  expect(page).to have_content "Review was successfully edited"
   end
 
-scenario "User review is too short" do
-
+scenario "User provides incorrect information" do
   user = FactoryGirl.build(:user)
   book = FactoryGirl.create(:book)
+  review = FactoryGirl.create(:review)
 
   visit root_path
   click_on "Sign up"
@@ -59,10 +69,17 @@ scenario "User review is too short" do
   click_on book.title
 
   click_on "Review Book"
-  fill_in "Review", with: "Awesome!"
+  fill_in "Review", with: review.review
   click_on "Create Review"
 
-  expect(page).to have_content "Review is too short"
-  end
+  expect(page).to have_content "Review was successfully created"
+  click_on book.title
 
+  click_on "Edit Review"
+  fill_in "Review", with: "It was OK"
+
+  click_on "Edit Review"
+
+  expect(page).to have_content "Review is too short (minimum is 50 characters)"
+end
 end

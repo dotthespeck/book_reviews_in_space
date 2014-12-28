@@ -1,18 +1,19 @@
 require "rails_helper"
 
-feature "User sees all books", %q(
-  As a user
-  I want to view recently posted books
-  So that I can see what others are reading
-
-  Acceptance Criteria
-
-  [x] I must see the title of each book
-  [x] I must see the description of each book
-  [x] I must see the URL of each book
-  [x] I must see books listed in order, most recently posted first
-  [x] I must see if a book was posted by an astronaut or a candidate
-) do
+feature "User sees all books" do
+#    %q(
+#   As a user
+#   I want to view recently posted books
+#   So that I can see what others are reading
+#
+#   Acceptance Criteria
+#
+#   [x] I must see the title of each book
+#   [x] I must see the description of each book
+#   [x] I must see the URL of each book
+#   [x] I must see books listed in order, most recently posted first
+#   [x] I must see if a book was posted by an astronaut or a candidate
+# )
 
   scenario "User sees all the books" do
 

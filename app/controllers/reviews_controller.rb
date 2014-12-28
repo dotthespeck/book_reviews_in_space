@@ -8,6 +8,10 @@ class ReviewsController < ApplicationController
     @review = Review.new
   end
 
+  def show
+    @review = Review.find(params[:id])
+  end
+
   def create
     @book = Book.find(params[:book_id])
     @review = Review.new(review_params)
@@ -22,9 +26,29 @@ class ReviewsController < ApplicationController
   end
 
   def edit
+    @review = Review.find(params[:id])
+  end
+
+  def update
+    @review = Review.find(params[:id])
+    @review.update(review_params)
+
+    if @review.update_attributes(review_params)
+      redirect_to root_path, notice: "Review was successfully edited"
+    else
+      render :edit, notice: "Review did not update"
+    end
   end
 
   def destroy
+    @review = Review.find(params[:id])
+    @review.destroy
+
+    if @review.destroy
+      redirect_to root_path, notice: "Review was successfully deleted"
+    else
+      render :edit, notice: "Review was not deleted"
+    end
   end
 
 private

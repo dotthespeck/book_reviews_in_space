@@ -1,19 +1,20 @@
 require 'rails_helper'
 
-feature "User sees reviews", %q(
-
-  As a user
-  I want to view the reviews for a book
-  So that I can see what people are saying about it
-
-  Acceptance Criteria
-
-   [x] I must be on the book detail page
-   [x] I must only see reviews to books I'm viewing
-   [x] I must see all reviews listed in order, most recent first
-   [x] I must see if the writer of the review is a candidate or an astronaut
-
-) do
+feature "User sees reviews" do
+#    %q(
+#
+#   As a user
+#   I want to view the reviews for a book
+#   So that I can see what people are saying about it
+#
+#   Acceptance Criteria
+#
+#    [x] I must be on the book detail page
+#    [x] I must only see reviews to books I'm viewing
+#    [x] I must see all reviews listed in order, most recent first
+#    [x] I must see if the writer of the review is a candidate or an astronaut
+#
+# )
 
   scenario "User reads reviews" do
     user = FactoryGirl.build(:user)
@@ -34,7 +35,7 @@ feature "User sees reviews", %q(
 
     click_on book.title
 
-    click_on "Review book"
+    click_on "Review Book"
     fill_in "Review", with: review.review
     click_on "Create Review"
 
@@ -66,7 +67,7 @@ feature "User sees reviews", %q(
     visit root_path
     click_on book.title
 
-    click_on "Review book"
+    click_on "Review Book"
     fill_in "Review", with: review.review
     click_on "Create Review"
 
@@ -75,7 +76,7 @@ feature "User sees reviews", %q(
     visit root_path
     click_on book.title
 
-    click_on "Review book"
+    click_on "Review Book"
     fill_in "Review", with: second_review.review
     click_on "Create Review"
 
@@ -103,7 +104,7 @@ feature "User sees reviews", %q(
 
     click_on book.title
 
-    click_on "Review book"
+    click_on "Review Book"
     fill_in "Review", with: review.review
     click_on "Create Review"
     visit root_path

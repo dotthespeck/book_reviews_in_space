@@ -1,4 +1,4 @@
-<%= form_for([@book, @review]) do |f| %>
+<%= form_for @review, :url => { :action => "update" } do |f| %>
 
 <% if @review.errors.any? %>
 <div id="error_explanation">
@@ -13,10 +13,14 @@
 
 <div class="field">
   <%= f.label :review, "Review" %><br />
-  <%= f.text_area :review, :size => "30x10" %>
+  <%= f.text_area :review, :value => @review.review, :size => "30x10" %>
+
 </div>
 
 <div class="actions">
-  <%= f.submit %>
+  <%= f.submit "Edit Review" %>
 </div>
+
+<%= button_to 'Delete', book_review_path, method: 'delete', data: { confirm: 'Are you sure?' } %>
+
 <% end %>
